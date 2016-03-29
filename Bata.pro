@@ -13,10 +13,23 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    mainwindow.cpp
+    apps/mainwindow.cpp
 
 HEADERS  += \
-    mainwindow.h
+    apps/mainwindow.h
 
 FORMS    += \
-    mainwindow.ui
+    apps/mainwindow.ui
+
+DISTFILES += \
+    ReadMe/readme.txt \
+    README.md
+
+unix:!macx: LIBS += -L$$PWD/extend/libs/ -lBataFaceIris
+unix:!macx: LIBS += -L$$PWD/extend/libs/ -lhwjpeg
+unix:!macx: LIBS += -L$$PWD/extend/libs/ -ljpeg
+unix:!macx: LIBS += -L$$PWD/extend/libs/ -luVideo
+unix:!macx: LIBS += -L$$PWD/extend/libs/ -lvpu
+
+INCLUDEPATH += $$PWD/extend/libs
+DEPENDPATH += $$PWD/extend/libs
