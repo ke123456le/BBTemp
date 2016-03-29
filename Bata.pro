@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,10 +13,25 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    apps/mainwindow.cpp
+    apps/mainwindow.cpp \
+    source/dbmanager.cpp \
+    source/master.cpp
 
 HEADERS  += \
-    apps/mainwindow.h
+    apps/mainwindow.h \
+    source/dbmanager.h \
+    source/master.h \
+    extend/include/bata.h \
+    extend/include/cBmp.h \
+    extend/include/hwjpeg.h \
+    extend/include/jconfig.h \
+    extend/include/jerror.h \
+    extend/include/jmorecfg.h \
+    extend/include/jpeglib.h \
+    extend/include/t9mb.h \
+    extend/include/uCom.h \
+    extend/include/uVideo.h \
+    source/errorcode.h
 
 FORMS    += \
     apps/mainwindow.ui
