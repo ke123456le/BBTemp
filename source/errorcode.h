@@ -2,10 +2,11 @@
 #define ERRORCODE
 
 
-typedef int BATA_RET;
+typedef int BT_RET;
 
-#define __BATA_SUCC                                         0   //Success
-#define __BATA_FAIL                                         1   //fail
+#define __BT_SUCC                                       0   //Success
+#define __BT_FAIL                                       1   //fail
+#define __BT_PARA_INVILD                                2
 
 
 #endif // ERRORCODE

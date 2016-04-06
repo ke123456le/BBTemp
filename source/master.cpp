@@ -20,7 +20,6 @@ int Master::init (showMessage showMsgFunc)
 
     //加载Board信息并验证是否注册
 
-
     //初始化数据库
     showMsgFunc(QString("初始化数据库..."));
     sysDbManager = new DbManager();
@@ -32,21 +31,28 @@ int Master::init (showMessage showMsgFunc)
         return errCode;
 
     //加载算法数据
+    showMsgFunc(QString("加载算法数据..."));
 
 
     //加载系统参数
-
+    showMsgFunc(QString("加载系统参数..."));
 
     //加载识别认证参数
+    showMsgFunc(QString("加载识别参数..."));
 
     //初始化用户模块并加载用户信息
+    showMsgFunc(QString("加载用户数据"));
 
     //初始化特征模块并加载特征数据
+    showMsgFunc(QString("加载用户特征数据..."));
 
 
+    //初始化摄像头及识别模块
 
 
-    return __BATA_SUCC;
+    //根据参数启动相关的系统服务
+
+    return __BT_SUCC;
 }
 
 
@@ -65,4 +71,5 @@ int Master::init (showMessage showMsgFunc)
 int Master::loadData ()
 {
 
+    return __BT_SUCC;
 }

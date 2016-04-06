@@ -15,7 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp \
     apps/mainwindow.cpp \
     source/dbmanager.cpp \
-    source/master.cpp
+    source/master.cpp \
+    source/logmanager.cpp \
+    source/userftrmanager.cpp \
+    source/systemconfig.cpp \
+    source/devicemanager.cpp \
+    source/identparamanager.cpp \
+    source/orgmanager.cpp \
+    source/usermanager.cpp \
+    source/loadsplash.cpp
 
 HEADERS  += \
     apps/mainwindow.h \
@@ -31,7 +39,15 @@ HEADERS  += \
     extend/include/t9mb.h \
     extend/include/uCom.h \
     extend/include/uVideo.h \
-    source/errorcode.h
+    source/errorcode.h \
+    source/logmanager.h \
+    source/userftrmanager.h \
+    source/systemconfig.h \
+    source/devicemanager.h \
+    source/identparamanager.h \
+    source/orgmanager.h \
+    source/usermanager.h \
+    source/loadsplash.h
 
 FORMS    += \
     apps/mainwindow.ui

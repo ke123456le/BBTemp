@@ -27,7 +27,7 @@ void showSplashMessage(QString msg)
 
 int main(int argc, char *argv[])
 {
-    BATA_RET errCode = __BATA_FAIL;
+    BT_RET errCode = __BT_FAIL;
     QApplication a(argc, argv);
 
     //init system
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     Master master;
 
     errCode = master.init (showSplashMessage);
-    if (__BATA_SUCC == errCode){
+    if (__BT_SUCC == errCode){
         showSplashMessage(QString("加载主界面..."));
         MainWindow w;
 
