@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStackedWidget>
+
+#include "silenceinterface.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +21,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private:
+    QStackedWidget *mainStackWidget;            /**/
+    SilenceInterface *silenceInterface;         /**/
 };
 
 #endif // MAINWINDOW_H

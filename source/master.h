@@ -21,7 +21,9 @@ private:
 
 private:
     //private api
-    int loadData();
+    BT_RET loadData();
+    BT_RET initFaceData(void);
+    BT_RET initIrisData(void);
 };
 
 #endif // MASTER_H

@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QSettings>
 #include <QMutex>
+#include <QDebug>
 
 #include "errorcode.h"
 
@@ -37,33 +38,39 @@
  * 安全等级
  */
 typedef enum{
-    SAFE_LEVEL_L = 0,                       /*低等级*/
+    SAFE_LEVEL_L = 1,                       /*低等级*/
     SAFE_LEVEL_M,                           /*中*/
     SAFE_LEVEL_H                            /*高*/
 }SAFE_LEVEL;
+
+#define SAFE_LEVEL_DEF                      SAFE_LEVEL_M
 
 
 /*
  *特征类型
  */
 typedef enum{
+    FEATURE_TYPE_MIN  = 0,
     FACE_FEATURE_TYPE = 1,                  /*单人脸特征*/
     IRIS_FEATURE_TYPE = 2,                  /*单虹膜特征*/
-    FACE_IRIS_FRATURE_TYPE = 3              /*人脸虹膜结合*/
+    FACE_IRIS_FRATURE_TYPE = 3,             /*人脸虹膜结合*/
 
     /*在以后增加新的类型是时注意,在这里每一种单类型的特征占一位,,如0位:人脸,1位:虹膜,2位:指纹.
      * 人脸+虹膜=3,人脸+虹膜+指纹=7
      */
+    FEATURE_TYPE_MAX
 }FEATURE_TYPE;
 
+#define FEATURE_TYPE_DEF                    FACE_IRIS_FRATURE_TYPE
 
 /*
  *比对类型
  */
 typedef enum{
-    ONE_TO_MANY = 0,                        /*一对多*/
+    ONE_TO_MANY = 1,                        /*一对多*/
     ONE_TO_ONE                              /*一对一*/
 }MATCH_TYPE;
+#define MATCH_TYPE_DEF                      ONE_TO_MANY
 
 
 
@@ -78,7 +85,7 @@ enum PARA_ENUM
     PARA_IRIS_QUALITY_THRD_H,                       //虹膜特征提取质量高阈值
 
     PARA_SAFE_LEVEL,                                //安全等级参数
-    PARA_TEATURE_TYPR,                              //特征类型参数
+    PARA_FEATURE_TYPR,                              //特征类型参数
     PARA_MATCH_TYPE                                 //比对方式参数
 };
 
@@ -114,6 +121,8 @@ class IdentParaManager
 public:
     static IdentParaManager *getInstance();/*单例*/
     static void releaseInstance();
+
+    Para *getPara(PARA_ENUM _Para, BT_RET & _errRet);
 
 
 private:

@@ -1,4 +1,5 @@
 #include "dbmanager.h"
+#include "errorcode.h"
 
 
 //数据库脚本路径
@@ -30,7 +31,7 @@ bool DbManager::InitDb()
     bool b_Ret = m_DB.open ();
     //qDebug()<<"isCreateDb"<<isCreateDb<<" b_Ret"<<b_Ret;
     if (!b_Ret)
-        return false;
+        return __BT_INIT_DB_FAIL;
 
     if (isCreateDb){
         #if 0
@@ -51,10 +52,10 @@ bool DbManager::InitDb()
         #endif
 
         system("sqlite3 ./db/demo.db < ./db/demo.sql");
-        return true;
+        return __BT_SUCC;
     }
 
-    return true;
+    return __BT_SUCC;
 }
 
 bool DbManager::DbIsEnable ()

@@ -8,6 +8,9 @@ QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+target.path = /app/Bata
+INSTALLS += target
+
 TARGET = Bata
 TEMPLATE = app
 
@@ -23,7 +26,11 @@ SOURCES += main.cpp \
     source/identparamanager.cpp \
     source/orgmanager.cpp \
     source/usermanager.cpp \
-    source/loadsplash.cpp
+    source/loadsplash.cpp \
+    source/common/datetimewidget.cpp \
+    apps/silenceinterface.cpp \
+    apps/maininterface.cpp \
+    source/featurematch.cpp
 
 HEADERS  += \
     apps/mainwindow.h \
@@ -47,7 +54,11 @@ HEADERS  += \
     source/identparamanager.h \
     source/orgmanager.h \
     source/usermanager.h \
-    source/loadsplash.h
+    source/loadsplash.h \
+    source/common/datetimewidget.h \
+    apps/silenceinterface.h \
+    apps/maininterface.h \
+    source/featurematch.h
 
 FORMS    += \
     apps/mainwindow.ui
@@ -64,3 +75,6 @@ unix:!macx: LIBS += -L$$PWD/extend/libs/ -lvpu
 
 INCLUDEPATH += $$PWD/extend/libs
 DEPENDPATH += $$PWD/extend/libs
+
+RESOURCES += \
+    res/res.qrc

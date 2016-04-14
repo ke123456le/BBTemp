@@ -28,7 +28,7 @@ IdentParaManager *IdentParaManager::_IdentParaManager = NULL;
 
 IdentParaManager::IdentParaManager():paraSetting(NULL)
 {
-    paraSetting = new QSettings("./conf/system_conf.ini", QSettings ::IniFormat);
+    paraSetting = new QSettings("./conf/ident_conf.ini", QSettings ::IniFormat);
 }
 
 
@@ -86,6 +86,7 @@ int IdentParaManager::init ()
     }else{
         faceFtrQualityPara.setParaValue (tmpValue);
     }
+    addIdentPara (PARA_FACE_QUALITY_THRD, faceFtrQualityPara);
 
     /*虹膜识别比对阈值参数*/
     Para irisMatchThrdPara(QString("IRIS_MATCH_THRD"));
@@ -96,6 +97,7 @@ int IdentParaManager::init ()
     }else{
         irisMatchThrdPara.setParaValue (tmpValue);
     }
+    addIdentPara (PARA_IRIS_MATCH_THRD, irisMatchThrdPara);
 
     /*虹膜特征质量阈值参数(低阈值)*/
     Para irisQualityThrdPara(QString("IRIS_QUALITY"));
@@ -106,6 +108,7 @@ int IdentParaManager::init ()
     }else{
         irisQualityThrdPara.setParaValue (tmpValue);
     }
+    addIdentPara (PARA_IRIS_QUALITY_THRD, irisQualityThrdPara);
 
     /**/
     /*虹膜特征质量阈值参数(高阈值)*/
@@ -119,6 +122,7 @@ int IdentParaManager::init ()
     }else{
         irisQualityThrdParaH.setParaValue (tmpValue);
     }
+    addIdentPara (PARA_IRIS_QUALITY_THRD_H, irisQualityThrdParaH);
 
     /*复合识别(人脸虹膜复合识别)比对阈值参数*/
     Para unionMatchThrdPara(QString("UNINON_MATCH_THRD"));
@@ -129,13 +133,41 @@ int IdentParaManager::init ()
     }else{
         unionMatchThrdPara.setParaValue (tmpValue);
     }
+    addIdentPara (PARA_FACE_IRIS_MATCH_THRD, unionMatchThrdPara);
 
 
     /*安全等级参数*/
+    Para safeLevelPara(QString("SAFE_LEVEL"));
+    tmpValue = paraSetting->value ("IDENT/safeLevel").toInt ();
+    if (tmpValue<SAFE_LEVEL_L || tmpValue>SAFE_LEVEL_H){
+        safeLevelPara.setParaValue (SAFE_LEVEL_DEF);
+        paraSetting->setValue ("IDENT/safeLevel", SAFE_LEVEL_DEF);
+    }else{
+        safeLevelPara.setParaValue (tmpValue);
+    }
+    addIdentPara (PARA_SAFE_LEVEL, safeLevelPara);
 
     /*识别类型参数*/
+    Para matchTypePara(QString("MATCH_TYPE"));
+    tmpValue = paraSetting->value ("IDENT/matchType").toInt ();
+    if (tmpValue<ONE_TO_MANY || tmpValue>ONE_TO_ONE){
+        matchTypePara.setParaValue (ONE_TO_MANY);
+        paraSetting->setValue ("IDENT/matchType", ONE_TO_MANY);
+    }else{
+        matchTypePara.setParaValue (tmpValue);
+    }
+    addIdentPara (PARA_MATCH_TYPE, matchTypePara);
 
     /*生物特征参数*/
+    Para featurePara(QString("FEATURE_TYPE"));
+    tmpValue = paraSetting->value ("IDENT/featureType").toInt ();
+    if (tmpValue<=FEATURE_TYPE_MIN || tmpValue>=FEATURE_TYPE_MAX){
+        featurePara.setParaValue (FEATURE_TYPE_DEF);
+        paraSetting->setValue ("IDENT/featureType", FEATURE_TYPE_DEF);
+    }else{
+        featurePara.setParaValue (tmpValue);
+    }
+    addIdentPara (PARA_FEATURE_TYPR, featurePara);
 
     return __BT_SUCC;
 }
@@ -176,5 +208,24 @@ int IdentParaManager::removeIdentPara(PARA_ENUM _paraType)
         identParaMap.remove (paraName);
 
     return __BT_SUCC;
+}
+
+
+Para *IdentParaManager::getPara(PARA_ENUM _Para, BT_RET & _errRet)
+{
+    Para *retPara = NULL;
+    QString paraName = paraTypeToName (_Para);
+
+    if (paraName.isEmpty ()){
+        _errRet = __BT_PARA_INVILD;
+        return NULL;
+    }
+
+    QMap<QString, Para>::const_iterator item = identParaMap.find (paraName);
+    if (item.key ()==paraName || item!=identParaMap.end ()){
+        retPara = (Para *)&item.value ();
+    }
+
+    return retPara;
 }
 
