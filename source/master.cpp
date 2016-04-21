@@ -68,12 +68,15 @@ int Master::init (showMessage showMsgFunc)
     errCode = userFtrManager->init ();
     CHECK_ERROR_RETURN(errCode);
 
+    //-----test-----
     FeatureDataMap *faceFeature = userFtrManager->featureMap (FACE_FEATURE_MAP);
-    faceFeature->FeatureTest ();
+    //faceFeature->FeatureTest ();
 
 
     //初始化摄像头及识别模块
 
+    /*---tets---*/
+    testCamera();
 
     //根据参数启动相关的系统服务
 
@@ -161,4 +164,23 @@ BT_RET Master::initIrisData(void)
     }
 
     return 0;
+}
+
+
+
+/*----------------------------------------------------------------------------------*/
+#include <QCamera>
+#include <qcamerainfo.h>
+#include <QList>
+
+BT_RET Master::testCamera()
+{
+    qDebug()<<__func__<<"CameraCount:"<<QCameraInfo::availableCameras ().count ();
+    QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
+    foreach (const QCameraInfo &cameraInfo, cameras) {
+        //if (cameraInfo.deviceName() == "mycamera")
+        //    camera = new QCamera(cameraInfo);
+        qDebug()<<__func__<<"CameraName:"<<cameraInfo.deviceName();
+    }
+    return __BT_SUCC;
 }

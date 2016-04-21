@@ -59,10 +59,11 @@ void DateTimeWidget::UpdateDateTime ()
     m_Time->setFont (QFont("Microsoft YaHei", 42));
 
     m_Time->setStyleSheet ("color:#CC66FF");
-    m_Date->setFont (QFont("Arial", 16));
+    //m_Date->setFont (QFont("Arial", 16));
+    m_Date->setFont (QFont("Microsoft YaHei", 16));
     //m_Week->setFont (QFont("ukai", 16));
     //m_Week->setFont (QFont("wqy-microhei", 18));
-    m_Week->setFont (QFont("Microsoft YaHei", 18));
+    m_Week->setFont (QFont("Microsoft YaHei", 16));
 
     m_Date->setStyleSheet ("color:#FFFFFF");
     m_Week->setStyleSheet ("color:#CC66FF");

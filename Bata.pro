@@ -4,15 +4,19 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 target.path = /app/Bata
 INSTALLS += target
 
+
+
 TARGET = Bata
 TEMPLATE = app
+
+QTPLUGIN     += BataCameraPulgin
 
 
 SOURCES += main.cpp \
@@ -30,7 +34,15 @@ SOURCES += main.cpp \
     source/common/datetimewidget.cpp \
     apps/silenceinterface.cpp \
     apps/maininterface.cpp \
-    source/featurematch.cpp
+    source/featurematch.cpp \
+    source/camera/bcamera.cpp \
+    source/camera/bcameractrlinterface.cpp \
+    source/camera/busbcameractrlinterface.cpp \
+    source/camera/bcsicameractrlinterface.cpp \
+    source/camera/decode.cpp \
+    source/camera/bfaceshowcamera.cpp \
+    source/camera/bfaceidentcamera.cpp \
+    source/camera/birisidentcamera.cpp
 
 HEADERS  += \
     apps/mainwindow.h \
@@ -58,7 +70,15 @@ HEADERS  += \
     source/common/datetimewidget.h \
     apps/silenceinterface.h \
     apps/maininterface.h \
-    source/featurematch.h
+    source/featurematch.h \
+    source/camera/bcamera.h \
+    source/camera/bcameractrlinterface.h \
+    source/camera/busbcameractrlinterface.h \
+    source/camera/bcsicameractrlinterface.h \
+    source/camera/decode.h \
+    source/camera/bfaceshowcamera.h \
+    source/camera/bfaceidentcamera.h \
+    source/camera/birisidentcamera.h
 
 FORMS    += \
     apps/mainwindow.ui

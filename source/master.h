@@ -24,6 +24,9 @@ private:
     BT_RET loadData();
     BT_RET initFaceData(void);
     BT_RET initIrisData(void);
+
+    //test
+    BT_RET testCamera();
 };
 
 #endif // MASTER_H
