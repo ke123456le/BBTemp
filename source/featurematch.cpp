@@ -424,6 +424,8 @@ int unionMatchStrategy::tomatch (MATCH_USER_T *_user)
 
     UserMap::iterator item = userMap->begin ();
 
+    qDebug()<<__func__<<"userMap Count"<<userMap->count ();
+
     for (;item!=userMap->end (); item++){
         int faceScore       = 0;
         int irisLeftScore   = 0;

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql multimedia
+QT       += core gui sql multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -36,13 +36,23 @@ SOURCES += main.cpp \
     apps/maininterface.cpp \
     source/featurematch.cpp \
     source/camera/bcamera.cpp \
-    source/camera/bcameractrlinterface.cpp \
-    source/camera/busbcameractrlinterface.cpp \
-    source/camera/bcsicameractrlinterface.cpp \
     source/camera/decode.cpp \
     source/camera/bfaceshowcamera.cpp \
     source/camera/bfaceidentcamera.cpp \
-    source/camera/birisidentcamera.cpp
+    source/camera/birisidentcamera.cpp \
+    source/camera/bcamerainfo.cpp \
+    source/camera/bcamerawidget.cpp \
+    source/common/bcommon.cpp \
+    source/service/bservice.cpp \
+    source/service/bidentservice.cpp \
+    source/service/bidentinterface.cpp \
+    source/service/bidentserviceproc.cpp \
+    source/camera/bcsicamera.cpp \
+    source/camera/busbcamera.cpp \
+    source/service/bsharedimagedata.cpp \
+    source/camera/bcameramanager.cpp \
+    apps/subinterface/user/userinterface.cpp \
+    apps/subinterface/userinterface.cpp
 
 HEADERS  += \
     apps/mainwindow.h \
@@ -72,13 +82,23 @@ HEADERS  += \
     apps/maininterface.h \
     source/featurematch.h \
     source/camera/bcamera.h \
-    source/camera/bcameractrlinterface.h \
-    source/camera/busbcameractrlinterface.h \
-    source/camera/bcsicameractrlinterface.h \
     source/camera/decode.h \
     source/camera/bfaceshowcamera.h \
     source/camera/bfaceidentcamera.h \
-    source/camera/birisidentcamera.h
+    source/camera/birisidentcamera.h \
+    source/camera/bcamerainfo.h \
+    source/camera/bcamera_p.h \
+    source/camera/bcamerawidget.h \
+    source/common/bcommon.h \
+    source/service/bservice.h \
+    source/service/bidentservice.h \
+    source/service/bidentinterface.h \
+    source/service/bidentserviceproc.h \
+    source/camera/busbcamera.h \
+    source/camera/bcsicamera.h \
+    source/service/bsharedimagedata.h \
+    source/camera/bcameramanager.h \
+    apps/subinterface/userinterface.h
 
 FORMS    += \
     apps/mainwindow.ui

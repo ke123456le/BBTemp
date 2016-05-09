@@ -26,7 +26,7 @@ private:
     BT_RET initIrisData(void);
 
     //test
-    BT_RET testCamera();
+    BT_RET testSystemCamera();
 };
 
 #endif // MASTER_H

@@ -22,7 +22,8 @@ typedef enum{
 
 typedef struct{
         void    *start;
-        size_t  length;
+        /*size_t  length;*/
+        unsigned int length;
 }DataBufs;
 
 typedef struct{

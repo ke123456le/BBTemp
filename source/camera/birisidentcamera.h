@@ -1,19 +1,35 @@
 #ifndef BIRISIDENTCAMERA_H
 #define BIRISIDENTCAMERA_H
 
-#include "bcamera.h"
-#include "extend/include/uVideo.h"
+#include <QImage>
 
-class BIrisIdentCamera : public BCamera
+#include "extend/include/uVideo.h"
+//#include "bcamera.h"
+#include "busbcamera.h"
+#include "bcamerainfo.h"
+#include "bcamerawidget.h"
+
+class BIrisIdentCamera : public BUsbCamera
 {
 public:
-    BIrisIdentCamera(unsigned int iWidth, unsigned int iHeight,
-                     unsigned int idProduct, unsigned int idVendor,
-                     QString fmt);
-    BIrisIdentCamera(QString _devName, unsigned int iWidth, unsigned int iHeight,
-                     QString fmt/*"jpg" or "yuv"*/);
+    BIrisIdentCamera();
+    ~BIrisIdentCamera();
+
+    int imageDataSize();
+
 private:
-    uVideoDevice cameraDevice;
+    DeCode *jpegDeCode;
+
+signals:
+
+//public slots:
+
+private:
+    unsigned char *dataBuffer;
+
+
+private:
+    void func();
 };
 
 #endif // BIRISIDENTCAMERA_H

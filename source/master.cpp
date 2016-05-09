@@ -76,7 +76,7 @@ int Master::init (showMessage showMsgFunc)
     //初始化摄像头及识别模块
 
     /*---tets---*/
-    testCamera();
+    //testSystemCamera();
 
     //根据参数启动相关的系统服务
 
@@ -173,7 +173,7 @@ BT_RET Master::initIrisData(void)
 #include <qcamerainfo.h>
 #include <QList>
 
-BT_RET Master::testCamera()
+BT_RET Master::testSystemCamera()
 {
     qDebug()<<__func__<<"CameraCount:"<<QCameraInfo::availableCameras ().count ();
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
@@ -182,5 +182,7 @@ BT_RET Master::testCamera()
         //    camera = new QCamera(cameraInfo);
         qDebug()<<__func__<<"CameraName:"<<cameraInfo.deviceName();
     }
+
     return __BT_SUCC;
 }
+

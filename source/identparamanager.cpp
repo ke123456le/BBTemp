@@ -224,6 +224,9 @@ Para *IdentParaManager::getPara(PARA_ENUM _Para, BT_RET & _errRet)
     QMap<QString, Para>::const_iterator item = identParaMap.find (paraName);
     if (item.key ()==paraName || item!=identParaMap.end ()){
         retPara = (Para *)&item.value ();
+        _errRet = __BT_SUCC;
+    }else{
+        _errRet = __BT_NOT_FOUND_IDENT_PARA;
     }
 
     return retPara;

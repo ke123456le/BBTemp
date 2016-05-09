@@ -1,19 +1,26 @@
 #ifndef BFACESHOWCAMERA_H
 #define BFACESHOWCAMERA_H
 
-#include "bcamera.h"
+#include <QString>
+//#include "bcamera.h"
+#include "bcsicamera.h"
 #include "extend/include/uVideo.h"
+#include "bcamerainfo.h"
 
-class BFaceShowCamera : public BCamera
+class BFaceShowCamera : public BCsiCamera
 {
 public:
-    BFaceShowCamera(unsigned int iWidth, unsigned int iHeight,
-                    unsigned int idProduct, unsigned int idVendor,
-                    QString fmt);
-    BFaceShowCamera(QString _devName, unsigned int iWidth, unsigned int iHeight,
-                    QString fmt/*"jpg" or "yuv"*/);
+    BFaceShowCamera();
+    ~BFaceShowCamera();
+
+    int imageDataSize();
+
+
 private:
-    uVideoDevice cameraDevice;
+    unsigned char *dataBuffer;
+
+private:
+    void func();
 };
 
 #endif // BFACESHOWCAMERA_H
